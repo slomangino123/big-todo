@@ -1,3 +1,0 @@
-is_global = true
-build_property.RootNamespace = Auth
-build_property.ProjectDir = C:\Code\IdentityServer4-DynamoDB\api\src\Auth\
