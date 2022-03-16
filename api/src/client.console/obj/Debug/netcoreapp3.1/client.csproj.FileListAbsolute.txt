@@ -1,0 +1,16 @@
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.exe
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.deps.json
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.runtimeconfig.json
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.runtimeconfig.dev.json
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.dll
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\client.pdb
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\IdentityModel.dll
+C:\Code\identity-server-ms\api\src\client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.csprojAssemblyReference.cache
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.AssemblyInfoInputs.cache
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.AssemblyInfo.cs
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.csproj.CoreCompileInputs.cache
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.csproj.CopyComplete
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.dll
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.pdb
+C:\Code\identity-server-ms\api\src\client\obj\Debug\netcoreapp3.1\client.genruntimeconfig.cache

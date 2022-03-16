@@ -1,0 +1,27 @@
+{
+  "profiles": {
+    "SelfHost": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "health",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://10.0.0.102:7000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": false,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/health/get",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+:443;http://+:80",
+        "ASPNETCORE_HTTPS_PORT": "44401",
+        "Kestrel:Certificates:Default:Path": "/root/.aspnet/https/server.pfx",
+        "Kestrel:Certificates:Default:Password": "TestPass123"
+      },
+      "httpPort": 44400,
+      "useSSL": true,
+      "sslPort": 44401
+    }
+  }
+}

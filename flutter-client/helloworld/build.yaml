@@ -1,0 +1,19 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - swaggers/**
+      - swaggers2/**
+      - swagger_input/**
+      - swagger_examples/**
+      - $package$
+    builders:
+      chopper_generator:
+        options:
+          header: "//Generated code"
+      swagger_dart_code_generator:
+        options:
+          input_folder: "swagger_input/"
+          output_folder: "lib/swagger_output/"
+          # input_urls:
+          #   - "http://10.0.0.102:7000/swagger/v1/swagger.json"
