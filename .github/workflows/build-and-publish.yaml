@@ -20,6 +20,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
         role-to-assume: arn:aws:iam::836386213271:role/AdminRole
+        role-duration-seconds: 1200
 
     - name: Login to Amazon ECR
       id: login-ecr
