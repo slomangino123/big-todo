@@ -4,6 +4,8 @@ on:
 jobs:
   build:
     name: Create App Version
+    runs-on: ubuntu-latest
+    
     steps: 
     - name: Set Latest Tag
       run: |
