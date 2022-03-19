@@ -10,7 +10,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Create Bundle
         run: |
@@ -18,16 +18,17 @@ jobs:
           echo "VERSION_LABEL=big-todo-api-${RUN_ID}" >> $GITHUB_ENV
           mkdir bundle
           envsubst < Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
+          cat bundle/Dockerrun.aws.json
           zip bundle.zip bundle
         
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: big-todo-api
-          environment_name: big-todo-api-d
-          version_label: ${{ env.VERSION_LABEL }}
-          region: us-east-1
-          deployment_package: bundle.zip
+      # - name: Deploy to Elastic Beanstalk
+      #   uses: einaregilsson/beanstalk-deploy@v20
+      #   with:
+      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     application_name: big-todo-api
+      #     environment_name: big-todo-api-d
+      #     version_label: ${{ env.VERSION_LABEL }}
+      #     region: us-east-1
+      #     deployment_package: bundle.zip
   
