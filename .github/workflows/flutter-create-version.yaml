@@ -2,6 +2,8 @@ name: Create App Version
 on:
   push:
     branches: [ master ]
+    paths: 
+      - 'api/src/api/**'
 jobs:
   build:
     name: Create App Version

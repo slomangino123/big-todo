@@ -14,12 +14,12 @@ jobs:
 
       - name: Create Bundle
         run: |
-        SHA=${{ env.GITHUB_SHA }}
-        VERSION=${SHA:0:3}
-        echo "VERSION_LABEL=big-todo-api-${VERSION}" >> $GITHUB_ENV
-        mkdir bundle
-        envsubst < Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
-        zip bundle.zip bundle
+          SHA=${{ env.GITHUB_SHA }}
+          VERSION=${SHA:0:3}
+          echo "VERSION_LABEL=big-todo-api-${VERSION}" >> $GITHUB_ENV
+          mkdir bundle
+          envsubst < Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
+          zip bundle.zip bundle
         
       - name: Deploy to Elastic Beanstalk
         with:
