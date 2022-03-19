@@ -3,6 +3,7 @@ name: Deploy to ECR
 on:
   push:
     branches: [ master ]
+    paths: 'api/src/api/**'
 
 jobs:
   build:
