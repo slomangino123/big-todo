@@ -2,7 +2,9 @@
 on:
   push:
     branches: [ master ]
-    paths: 'flutter-client/**'
+    paths:
+      - 'flutter-client/**'
+      - '.github/workflows/flutter-build-and-release-apk.yaml'
 name: Test, Build and Release apk
 jobs:
   build:
@@ -15,7 +17,8 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
-        flutter-version: '1.7.8+hotfix.4'
+        flutter-version: '2.10.3'
+    - run: cd flutter-client
     - run: flutter pub get
     - run: flutter test
     - run: flutter build apk --debug --split-per-abi
