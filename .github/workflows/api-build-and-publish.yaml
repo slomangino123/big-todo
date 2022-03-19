@@ -6,6 +6,7 @@ on:
     paths: 
       - 'api/src/api/**'
       - '.github/workflows/api-build-and-publish.yaml'
+      - '.github/workflows/api-eb-deploy.yaml'
 
 jobs:
   build:
