@@ -3,7 +3,8 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'api/src/api/**'
+      - 'flutter-client/**'
+      - '.github/workflows/flutter-create-version.yaml'
 jobs:
   build:
     name: Create App Version

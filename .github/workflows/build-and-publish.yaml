@@ -4,7 +4,8 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'flutter-client/**'
+      - 'api/src/api/**'
+      - '.github/workflows/api-build-and-publish.yaml'
 
 jobs:
   build:
