@@ -35,9 +35,9 @@ jobs:
         ECR_REPOSITORY: big-todo-api
         IMAGE_TAG_LATEST: latest
       run: |
-        SHA=${{ env.GITHUB_SHA }}
-        VERSION=${SHA:0:6}
+        RUN_ID=${{ env.GITHUB_RUN_ID }}
+        
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -f api/src/api/Dockerfile .
-        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST $ECR_REGISTRY/$ECR_REPOSITORY:$RUN_ID
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$RUN_ID
