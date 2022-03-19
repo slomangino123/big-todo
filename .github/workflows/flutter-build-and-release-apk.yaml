@@ -1,7 +1,8 @@
 # https://betterprogramming.pub/ci-cd-for-flutter-apps-using-github-actions-b833f8f7aac
 on:
   push:
-    branches: [ master ]
+    tags:
+      - '*'
     paths:
       - 'flutter-client/**'
       - '.github/workflows/flutter-build-and-release-apk.yaml'
