@@ -14,8 +14,7 @@ jobs:
 
       - name: Create Bundle
         run: |
-          RUN_ID=${{ env.GITHUB_RUN_ID }}
-          echo "VERSION_LABEL=big-todo-api-${RUN_ID}" >> $GITHUB_ENV
+          VERSION="latest"
           mkdir bundle
           envsubst < Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
           cat bundle/Dockerrun.aws.json
