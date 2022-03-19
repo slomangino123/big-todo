@@ -27,7 +27,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: big-todo-api
           environment_name: big-todo-api-d
-          version_label: ${{ env.VERSION_LABEL }}
+          version_label: big-todo-latest
           region: us-east-1
           deployment_package: bundle.zip
   
