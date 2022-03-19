@@ -16,7 +16,7 @@ jobs:
         run: |
           VERSION="latest"
           mkdir bundle
-          envsubst < Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
+          envsubst < api/src/api/Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
           cat bundle/Dockerrun.aws.json
           zip bundle.zip bundle
         
