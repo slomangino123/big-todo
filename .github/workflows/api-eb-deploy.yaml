@@ -28,6 +28,7 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::836386213271:role/AdminRole
           role-duration-seconds: 1200
+          role-session-name: GitHubActions
         
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
