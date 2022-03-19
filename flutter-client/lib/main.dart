@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'dart:convert';
 
@@ -9,7 +10,8 @@ import 'login.dart';
 
 final storage = FlutterSecureStorage();
 
-void main() async {
+Future main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

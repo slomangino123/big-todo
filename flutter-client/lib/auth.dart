@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:helloworld/home_page.dart';
 import 'package:openid_client/openid_client_io.dart';
@@ -7,13 +8,19 @@ import 'main.dart' as main;
 import 'package:http/http.dart' as http;
 
 class Auth {
-  static const String authScheme = 'http';
-  static const String authHost = '10.0.0.102';
-  static const int authPort = 5000;
   static const String clientId = 'flutter';
 
   Future login(BuildContext context) async {
-    var uri = Uri(scheme: authScheme, host: authHost, port: authPort);
+    Uri uri;
+    if (dotenv.env['ENV']! == "Production")
+    {
+      uri = Uri.https(dotenv.env['AUTH']!, "");
+    }
+    else
+    {
+      uri = Uri.http(dotenv.env['AUTH']!, "");
+    }
+
     var scopes = ['openid', 'profile', 'todo.read', 'todo.write'];
 
     var issuer = await Issuer.discover(uri);

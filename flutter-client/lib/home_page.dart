@@ -1,6 +1,6 @@
 // import 'dart:convert';
 import 'dart:developer';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:helloworld/text_input_widget.dart';
 import 'auth_interceptor.dart';
@@ -34,9 +34,13 @@ class _HomePageState extends State<HomePage> {
 
   Api apiFactory() {
     return Api.create(
-      baseUrl: 'http://10.0.0.102:7000',
+      baseUrl: dotenv.env['API'],
       interceptors: [AuthInterceptor()]
     );
+    // return Api.create(
+    //   baseUrl: 'http://10.0.0.102:7000',
+    //   interceptors: [AuthInterceptor()]
+    // );
   }
 
   Future loadTodos() async {
