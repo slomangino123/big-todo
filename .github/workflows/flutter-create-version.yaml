@@ -1,3 +1,4 @@
+name: Create App Version
 on:
   push:
     branches: [ master ]
@@ -7,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-    - uses: actions/checkout@v2
-    - name: Bump version and push tag
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Increment version and push tag
       id: tag_version
-      uses: mathieudutour/github-tag-action@v6.0
+      uses: mathieudutour/github-tag-action@v6.0 # https://github.com/mathieudutour/github-tag-action
       with:
         github_token: ${{ secrets.REPO_TOKEN }}
