@@ -30,9 +30,10 @@ jobs:
     # - run: flutter test # TODO: run unit tests once they exist
     - run: flutter build apk --debug --split-per-abi
     - run: ls build/app/outputs/flutter-apk
-    - run: ls /build/app/outputs/flutter-apk
+    - run: pwd
     - name: Create a Release APK
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "/build/app/outputs/flutter-apk/*.apk"
+        artifacts: "build/app/outputs/flutter-apk/*.apk"
         token: ${{ secrets.REPO_TOKEN }}
+        prerelease: true
