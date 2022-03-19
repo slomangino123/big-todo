@@ -34,11 +34,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: big-todo-api
         IMAGE_TAG_LATEST: latest
+      run: echo "$GITHUB_ENV"
       run: |
-        RUN_ID=${{ env.GITHUB_RUN_ID }}
-        echo "$GITHUB_ENV"
-        echo "$RUN_ID"
         # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -f api/src/api/Dockerfile .
-        # docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST $ECR_REGISTRY/$ECR_REPOSITORY:$RUN_ID
         # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST
-        # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$RUN_ID
