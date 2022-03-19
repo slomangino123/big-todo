@@ -22,7 +22,6 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '2.10.3'
-    - run: cd flutter-client
     - run: flutter pub get
     - run: flutter test
     - run: flutter build apk --debug --split-per-abi
