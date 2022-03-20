@@ -18,7 +18,8 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     
-    - run: echo ${{ env }}
+    - run: echo "${GITHUB_ENV}"
+    - run: echo "${GITHUB_CONTEXT}"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1 # Thank you github https://github.com/aws-actions/configure-aws-credentials
