@@ -2,12 +2,12 @@ name: API - Deploy Elastic Beanstalk
 
 on:
   workflow_run:
-    workflows: ["Build and Publish to ECR"]
+    workflows: ["API - Build and Publish to ECR"]
     types:
       - completed
 
 jobs:
-  deploy:
+  api_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

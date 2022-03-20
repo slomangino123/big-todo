@@ -10,15 +10,16 @@ on:
       - '.github/workflows/api-eb-deploy.yaml'
 
 jobs:
-  build:
+  api_build_and_publish:
     name: Build and Publish
     runs-on: ubuntu-latest
+    needs: api_increment_version
 
     steps:
     - name: Check out code
       uses: actions/checkout@v2
     
-    - run : echo ${{ github.event.release.tag_name }}
+    - run : echo ${{ needs.api_increment_version.outputs.tag }}
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1 # Thank you github https://github.com/aws-actions/configure-aws-credentials

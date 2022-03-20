@@ -7,7 +7,7 @@ on:
       - '.github/workflows/api-build-and-publish.yaml'
       - '.github/workflows/api-eb-deploy.yaml'
 jobs:
-  build:
+  api_increment_version:
     name: Increment Version
     runs-on: ubuntu-latest
 
@@ -20,3 +20,6 @@ jobs:
       with:
         github_token: ${{ secrets.REPO_TOKEN }}
         tag_prefix: 'api-'
+    
+    outputs:
+      tag: ${{ steps.tag_version.outputs.new_tag }}
