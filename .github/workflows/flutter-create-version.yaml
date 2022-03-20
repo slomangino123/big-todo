@@ -1,4 +1,4 @@
-name: Create App Version
+name: Flutter Create App Version
 on:
   push:
     branches: [ master ]
