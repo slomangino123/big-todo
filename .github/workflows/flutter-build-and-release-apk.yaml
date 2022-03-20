@@ -1,5 +1,5 @@
 # https://betterprogramming.pub/ci-cd-for-flutter-apps-using-github-actions-b833f8f7aac
-name: Test, Build and Release apk
+name: Flutter - Test, Build and Release apk
 on:
   push:
     tags:

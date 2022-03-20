@@ -1,4 +1,4 @@
-name: Build and Publish to ECR
+name: API - Build and Publish to ECR
 
 on:
   push:

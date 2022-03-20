@@ -1,4 +1,4 @@
-name: Flutter Increment Version
+name: Flutter - Increment Version
 on:
   push:
     branches: [ master ]
