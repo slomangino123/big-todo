@@ -1,4 +1,4 @@
-name: Create App Version
+name: API Increment Version
 on:
   push:
     branches: [ master ]
@@ -8,7 +8,7 @@ on:
       - '.github/workflows/api-eb-deploy.yaml'
 jobs:
   build:
-    name: Create App Version
+    name: Increment Version
     runs-on: ubuntu-latest
 
     steps: 
