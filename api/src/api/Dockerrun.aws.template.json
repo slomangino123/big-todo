@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": "1",
     "Image": {
-      "Name": "836386213271.dkr.ecr.us-east-1.amazonaws.com/big-todo-api:${VERSION}"
+      "Name": "836386213271.dkr.ecr.us-east-1.amazonaws.com/big-todo-api:${IMAGE_TAG}"
     },
     "Ports": [
       {
