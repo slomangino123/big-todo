@@ -2,7 +2,7 @@ name: API - Deploy Elastic Beanstalk
 
 on:
   workflow_run:
-    workflows: ["API - Build and Publish to ECR"]
+    workflows: ["TODO: API - Build and Publish to ECR"]
     types:
       - completed
 

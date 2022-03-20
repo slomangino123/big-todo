@@ -2,14 +2,29 @@ name: API - Build and Publish to ECR
 
 on:
   push:
-    tags:
-      - 'api-*'
+    branches: [ master ]
     paths: 
       - 'api/src/api/**'
-      - '.github/workflows/api-build-and-publish.yaml'
-      - '.github/workflows/api-eb-deploy.yaml'
+      - '.github/workflows/api-*'
 
 jobs:
+  api_increment_version:
+    name: Increment Version
+    runs-on: ubuntu-latest
+
+    steps: 
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Increment version and push tag
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v6.0 # https://github.com/mathieudutour/github-tag-action
+      with:
+        github_token: ${{ secrets.REPO_TOKEN }}
+        tag_prefix: 'api-'
+    
+    outputs:
+      tag: ${{ steps.tag_version.outputs.new_tag }}
+
   api_build_and_publish:
     name: Build and Publish
     runs-on: ubuntu-latest
