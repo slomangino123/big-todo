@@ -2,7 +2,8 @@ name: Build and Publish to ECR
 
 on:
   push:
-    branches: [ master ]
+    tags:
+      - 'api-*'
     paths: 
       - 'api/src/api/**'
       - '.github/workflows/api-build-and-publish.yaml'
@@ -17,6 +18,8 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     
+    - run: echo "$GITHUB_ENV"
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1 # Thank you github https://github.com/aws-actions/configure-aws-credentials
       with:

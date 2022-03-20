@@ -3,7 +3,7 @@ name: Test, Build and Release apk
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
     paths:
       - 'flutter-client/**'
       - '.github/workflows/flutter-build-and-release-apk.yaml'
