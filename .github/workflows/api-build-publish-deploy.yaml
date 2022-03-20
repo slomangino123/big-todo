@@ -75,7 +75,7 @@ jobs:
           mkdir bundle
           envsubst < api/src/api/Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
           cat bundle/Dockerrun.aws.json
-          zip -r bundle.zip bundle
+          zip -r -j bundle.zip bundle/*
     
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v1 # Thank you github https://github.com/aws-actions/configure-aws-credentials
