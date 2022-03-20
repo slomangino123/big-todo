@@ -29,12 +29,14 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
     needs: api_increment_version
+    env:
+      TAG: ${{ needs.api_increment_version.outputs.tag }}
 
     steps:
     - name: Check out code
       uses: actions/checkout@v2
     
-    - run : echo ${{ needs.api_increment_version.outputs.tag }}
+    - run : echo $TAG
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1 # Thank you github https://github.com/aws-actions/configure-aws-credentials
@@ -53,7 +55,10 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: big-todo-api
+        IMAGE_TAG: $TAG
         IMAGE_TAG_LATEST: latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -f api/src/api/Dockerfile .
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST
