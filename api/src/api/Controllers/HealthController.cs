@@ -10,7 +10,6 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    [Authorize]
     public class HealthController : ControllerBase
     {
         private readonly ILogger<HealthController> _logger;
@@ -28,6 +27,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Identity()
         {
             var claims = User.Claims.Select(x => new { x.Type, x.Value });
