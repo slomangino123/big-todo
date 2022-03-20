@@ -1,4 +1,4 @@
-name: Flutter Create App Version
+name: Flutter Increment Version
 on:
   push:
     branches: [ master ]
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/flutter-create-version.yaml'
 jobs:
   build:
-    name: Create App Version
+    name: Increment Version
     runs-on: ubuntu-latest
 
     steps: 
