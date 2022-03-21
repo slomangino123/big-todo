@@ -24,8 +24,8 @@ jobs:
       with:
         flutter-version: '2.10.3'
     - run: |
-        chmod +x generate-env.sh d
-        ./generate-env.sh
+        chmod +x generate-env.sh
+        ./generate-env.sh d
     - run: flutter pub get
     # - run: flutter test # TODO: run unit tests once they exist
     - run: flutter build apk --debug --split-per-abi

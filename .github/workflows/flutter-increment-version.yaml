@@ -7,6 +7,7 @@ on:
     paths: 
       - 'flutter-client/**'
       - '.github/workflows/flutter-increment-version.yaml'
+      - '.github/workflows/flutter-build-and-release-apk.yaml'
 jobs:
   build:
     name: Increment Version
