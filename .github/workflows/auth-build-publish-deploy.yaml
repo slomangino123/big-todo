@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'api/src/auth/**'
+      - 'api/src/Auth/**'
       - '.github/workflows/auth-*'
 
 jobs:
