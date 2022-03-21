@@ -1,4 +1,6 @@
 name: Flutter - Increment Version
+
+# TODO: Fix this not being able to run manually. For now, just update this comment to trigger a tag update on the commit.
 on:
   push:
     branches: [ master ]
