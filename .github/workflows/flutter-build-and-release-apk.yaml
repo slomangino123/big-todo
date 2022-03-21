@@ -8,7 +8,7 @@ on:
       - 'flutter-client/**'
       - '.github/workflows/flutter-build-and-release-apk.yaml'
 jobs:
-  build:
+  build_dev:
     name: Build APK
     runs-on: ubuntu-latest
     defaults:
@@ -24,7 +24,7 @@ jobs:
       with:
         flutter-version: '2.10.3'
     - run: |
-        chmod +x generate-env.sh
+        chmod +x generate-env.sh d
         ./generate-env.sh
     - run: flutter pub get
     # - run: flutter test # TODO: run unit tests once they exist

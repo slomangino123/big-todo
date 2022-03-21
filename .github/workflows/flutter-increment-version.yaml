@@ -18,3 +18,4 @@ jobs:
       uses: mathieudutour/github-tag-action@v6.0 # https://github.com/mathieudutour/github-tag-action
       with:
         github_token: ${{ secrets.REPO_TOKEN }}
+        tag_prefix: 'flutter-'
