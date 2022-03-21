@@ -55,7 +55,7 @@ jobs:
         ECR_REPOSITORY: big-todo-auth
         IMAGE_TAG_LATEST: latest
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -f api/src/auth/Dockerfile .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST -f api/src/Auth/Dockerfile .
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_LATEST
@@ -73,7 +73,7 @@ jobs:
         run: |
           export IMAGE_TAG
           mkdir bundle
-          envsubst < api/src/auth/Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
+          envsubst < api/src/Auth/Dockerrun.aws.template.json > bundle/Dockerrun.aws.json
           cat bundle/Dockerrun.aws.json
           zip -r -j bundle.zip bundle/*
     
