@@ -6,7 +6,7 @@ on:
     branches: [ master ]
     paths: 
       - 'flutter-client/**'
-      - '.github/workflows/flutter-create-version.yaml'
+      - '.github/workflows/flutter-increment-version.yaml'
 jobs:
   build:
     name: Increment Version
