@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Auth.Configuration.Options;
 using IdentityServer4.DynamoDB.Data;
 using IdentityServer4.Models;
 using static IdentityServer4.IdentityServerConstants;
@@ -10,7 +11,9 @@ namespace Auth
 {
     public static class IdentityServerConfig
     {
-        public static void ConfigureData(this SeedDataBuilder builder)
+        public static void ConfigureData(
+            this SeedDataBuilder builder,
+            TodoApiOptions todoApiOptions)
         {
             builder.AddClient(client =>
             {
@@ -40,8 +43,8 @@ namespace Auth
                 client.AllowedGrantTypes = GrantTypes.Code;
                 client.RequirePkce = true;
                 client.RequireClientSecret = false;
-                client.RedirectUris = new string[] { "http://10.0.0.102:7000/swagger/oauth2-redirect.html" };
-                client.AllowedCorsOrigins = new string[] { "http://10.0.0.102:7000" };
+                client.RedirectUris = new string[] { $"{todoApiOptions.Address}/swagger/oauth2-redirect.html" };
+                client.AllowedCorsOrigins = new string[] { $"{todoApiOptions.Address}" };
                 client.AllowedScopes = new string[] { StandardScopes.OpenId, StandardScopes.Profile, "todo.read", "todo.write", "todo.delete" };
             })
             .AddApiResource(apiResource =>

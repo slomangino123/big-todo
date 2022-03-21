@@ -1,22 +1,16 @@
-using System.Linq;
 using Amazon.DynamoDBv2;
+using Auth.Configuration.Options;
 using Auth.Data;
 using Auth.Services;
 using IdentityServer4.DynamoDB.Data;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
-using Amazon.Extensions.NETCore.Setup;
-using static IdentityServer4.IdentityServerConstants;
 
 namespace Auth
 {
@@ -35,6 +29,9 @@ namespace Auth
         public void ConfigureServices(IServiceCollection services)
         {
             IdentityModelEventSource.ShowPII = true;
+
+            var todoApiOptions = new TodoApiOptions();
+            Configuration.GetSection(TodoApiOptions.Section).Bind(todoApiOptions);
 
             services.AddDbContext<AppIdentityDbContext>(config =>
             {
@@ -58,7 +55,7 @@ namespace Auth
             });
 
             services.AddTransient<SeedDataRunner>();
-            services.RegisterDynamoDbSeedData(x => x.ConfigureData());
+            services.RegisterDynamoDbSeedData(x => x.ConfigureData(todoApiOptions));
 
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
 
