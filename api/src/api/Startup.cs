@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using api.Configuration;
+using api.Configuration.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,20 +28,24 @@ namespace api
         {
             IdentityModelEventSource.ShowPII = true;
 
+            var authoptions = new AuthOptions();
+            Configuration.GetSection(AuthOptions.Section).Bind(authoptions);
+
             services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
                     options.RequireHttpsMetadata = false;
-                    options.Authority = "http://10.0.0.102:5000";
+                    options.Authority = authoptions.Address;
                     options.Audience = "todo";
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidIssuers = new string[]
                         {
-                            "http://localhost:5000",
+                           "http://localhost:5000",
+                           authoptions.Address,
                         },
                         ValidateAudience = true,
                         ValidateIssuer = true,
@@ -70,8 +75,8 @@ namespace api
                     {
                         AuthorizationCode = new OpenApiOAuthFlow
                         {
-                            AuthorizationUrl = new Uri("http://10.0.0.102:5000/connect/authorize", UriKind.Absolute),
-                            TokenUrl = new Uri("http://10.0.0.102:5000/connect/token", UriKind.Absolute),
+                            AuthorizationUrl = new Uri($"{authoptions.Address}/connect/authorize", UriKind.Absolute),
+                            TokenUrl = new Uri($"{authoptions.Address}/connect/token", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
                                 { "todo.read", "read todos" },
@@ -97,12 +102,6 @@ namespace api
                     }
                 });
             });
-
-            // https://docs.identityserver.io/en/latest/topics/add_apis.html
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy()
-            //});
 
             services.AddTodoDomainServices();
         }
