@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Logging;
 
 namespace Auth
@@ -30,8 +31,10 @@ namespace Auth
         {
             IdentityModelEventSource.ShowPII = true;
 
+            var todoApiOptionsConfigSection = Configuration.GetSection(TodoApiOptions.Section);
             var todoApiOptions = new TodoApiOptions();
-            Configuration.GetSection(TodoApiOptions.Section).Bind(todoApiOptions);
+            todoApiOptionsConfigSection.Bind(todoApiOptions);
+            services.Configure<TodoApiOptions>(todoApiOptionsConfigSection);
 
             services.AddDbContext<AppIdentityDbContext>(config =>
             {
@@ -92,11 +95,15 @@ namespace Auth
                 app.UseDeveloperExceptionPage();
             }
 
+            var todoApiOptions = app.ApplicationServices
+                .GetRequiredService<IOptions<TodoApiOptions>>()
+                .Value;
+
             app.UseCors(policy =>
             {
                 policy.AllowAnyMethod();
                 policy.AllowAnyHeader();
-                policy.WithOrigins("http://10.0.0.102:7000");
+                policy.WithOrigins(todoApiOptions.Address);
             });
 
             app.UseRouting();
