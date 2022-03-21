@@ -14,11 +14,13 @@ class Auth {
     Uri uri;
     if (dotenv.env['ENV']! == "Production")
     {
-      uri = Uri.https(dotenv.env['AUTH']!, "");
+      var trimmedAuth = dotenv.env['AUTH']!.replaceFirst(RegExp('https://'), '');
+      uri = Uri.https(trimmedAuth, "");
     }
     else
     {
-      uri = Uri.http(dotenv.env['AUTH']!, "");
+      var trimmedAuth = dotenv.env['AUTH']!.replaceFirst(RegExp('http://'), '');
+      uri = Uri.http(trimmedAuth, "");
     }
 
     var scopes = ['openid', 'profile', 'todo.read', 'todo.write'];
