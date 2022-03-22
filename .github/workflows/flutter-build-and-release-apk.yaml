@@ -23,10 +23,9 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '2.10.3'
-    # - run: |
-    #     chmod +x generate-env.sh
-    #     ./generate-env.sh d
-    - run: cat .env
+    - run: |
+        chmod +x generate-env.sh
+        ./generate-env.sh d
     - run: flutter pub get
     # - run: flutter test # TODO: run unit tests once they exist
     - run: flutter build apk --release --split-per-abi
