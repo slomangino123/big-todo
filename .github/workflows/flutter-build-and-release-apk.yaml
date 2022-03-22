@@ -30,6 +30,7 @@ jobs:
         ./generate-env.sh d
     - run: pwd
     - run: ls -a
+    - run: cat .env
     - run: flutter pub get
     - run: pwd
     - run: ls -a
