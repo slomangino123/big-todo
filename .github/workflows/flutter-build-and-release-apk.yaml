@@ -23,21 +23,13 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '2.10.3'
-    - run: pwd
-    - run: ls -a
-    - run: |
-        chmod +x generate-env.sh
-        ./generate-env.sh d
-    - run: pwd
-    - run: ls -a
+    # - run: |
+    #     chmod +x generate-env.sh
+    #     ./generate-env.sh d
     - run: cat .env
     - run: flutter pub get
-    - run: pwd
-    - run: ls -a
     # - run: flutter test # TODO: run unit tests once they exist
     - run: flutter build apk --debug --split-per-abi
-    - run: pwd
-    - run: ls -a
     - name: Create a Release APK
       uses: ncipollo/release-action@v1
       with:
